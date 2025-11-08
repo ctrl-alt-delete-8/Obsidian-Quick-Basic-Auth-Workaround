@@ -1,0 +1,11 @@
+{
+	"id": "quick-basic-auth-workaround",
+	"name": "Quick Basic Auth",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Workaround for HTTP Basic Auth in webviewer. Pre-authenticate to access protected WebDAV, Git servers, and other Basic Auth resources.",
+	"author": "@tinkerer-ctrl-alt-del",
+	"authorUrl": "",
+	"fundingUrl": "https://www.buymeacoffee.com/tinkerer.ctrl.alt.del",
+	"isDesktopOnly": false
+}
