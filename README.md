@@ -33,7 +33,7 @@ Some servers use stateless authentication (session-based, not cookie-based). If 
 
 While credentials are **never stored**, the plugin reads your username and password in plain text when you enter them (to construct the authentication URL). Only use this plugin on your own device. Avoid using on shared or public computers.
 
-If unsure, check the [open source code](https://github.com/xxx/blob/main/main.ts).
+If unsure, check the source code [here](https://github.com/ctrl-alt-delete-8/Obsidian-Quick-Basic-Auth-Workaround/blob/main/main.ts).
 
 ## Installation
 
