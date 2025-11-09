@@ -5,7 +5,8 @@
 	"minAppVersion": "0.15.0",
 	"description": "Workaround for HTTP Basic Auth in webviewer. Pre-authenticate to access protected WebDAV, Git servers, and other Basic Auth resources.",
 	"author": "@tinkerer-ctrl-alt-del",
-	"authorUrl": "",
+	"authorUrl": "https://github.com/ctrl-alt-delete-8/",
+	"repo": "https://github.com/ctrl-alt-delete-8/Obsidian-Quick-Basic-Auth-Workaround",
 	"fundingUrl": "https://www.buymeacoffee.com/tinkerer.ctrl.alt.del",
 	"isDesktopOnly": false
 }

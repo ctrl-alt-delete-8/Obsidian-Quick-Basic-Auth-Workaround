@@ -166,6 +166,78 @@ class BasicAuthModal extends Modal {
 }
 
 /**
+ * Reusable function to create author and support section with buttons
+ * @param containerEl - The container element to append the section to
+ * @param githubRepoUrl - The GitHub repository URL
+ */
+function createAuthorSupportSection(containerEl: HTMLElement, githubRepoUrl: string) {
+	// Author and Support section
+	containerEl.createEl('hr', { attr: { style: 'margin: 30px 0 20px 0; border: none; border-top: 1px solid var(--background-modifier-border);' } });
+
+	const authorSection = containerEl.createDiv();
+	authorSection.setAttribute('style', 'text-align: center; margin: 15px 0;');
+
+	authorSection.createEl('p', {
+		text: 'Created by @tinkerer-ctrl-alt-del',
+		attr: { style: 'margin: 5px 0; font-weight: bold;' }
+	});
+
+	authorSection.createEl('p', {
+		text: 'Have questions, found a bug, or want to request a feature? Join the Discord server!',
+		attr: { style: 'margin: 5px 0; color: var(--text-muted);' }
+	});
+
+	const buttonsContainer = containerEl.createDiv();
+	buttonsContainer.setAttribute('style', 'text-align: center; margin: 20px 0; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;');
+
+	// Discord button
+	const discordButton = buttonsContainer.createEl('a', {
+		text: '💬 Join Discord',
+		href: 'https://discord.com/invite/bXMpCTBMcg',
+		attr: {
+			target: '_blank',
+			style: 'display: inline-block; padding: 10px 20px; background-color: #5865F2; color: #FFFFFF; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #4752C4; transition: opacity 0.2s;'
+		}
+	});
+
+	discordButton.addEventListener('mouseenter', () => {
+		discordButton.style.opacity = '0.8';
+	});
+
+	discordButton.addEventListener('mouseleave', () => {
+		discordButton.style.opacity = '1';
+	});
+
+	// Buy Me a Coffee button
+	const coffeeButton = buttonsContainer.createEl('a', {
+		text: 'Buy me a coffee',
+		href: 'https://www.buymeacoffee.com/tinkerer.ctrl.alt.del',
+		attr: {
+			target: '_blank',
+			style: 'display: inline-block; padding: 10px 20px; background-color: #FFDD00; color: #000000; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #000000; transition: opacity 0.2s;'
+		}
+	});
+
+	coffeeButton.addEventListener('mouseenter', () => {
+		coffeeButton.style.opacity = '0.8';
+	});
+
+	coffeeButton.addEventListener('mouseleave', () => {
+		coffeeButton.style.opacity = '1';
+	});
+
+	// GitHub repo button
+	const githubButton = buttonsContainer.createEl('a', {
+		text: 'GitHub repo',
+		href: githubRepoUrl,
+		attr: {
+			target: '_blank',
+			style: 'display: inline-block; padding: 10px 20px; background-color: #24292e; color: #FFFFFF; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #1b1f23;'
+		}
+	});
+}
+
+/**
  * Settings Tab for Quick Basic Auth
  */
 class QuickBasicAuthSettingTab extends PluginSettingTab {
@@ -218,10 +290,10 @@ class QuickBasicAuthSettingTab extends PluginSettingTab {
 		const sourceLink = cautionBox.createEl('p', {
 			attr: { style: 'margin: 0;' }
 		});
-		sourceLink.createEl('span', { text: 'If unsure, check the ' });
+		sourceLink.createEl('span', { text: 'If unsure, check the source code ' });
 		sourceLink.createEl('a', {
-			text: 'open source code',
-			href: 'https://github.com/EllenGYY/obsidian-toolbox/blob/master/quick-basic-auth-workaround/main.ts',
+			text: 'here',
+			href: 'https://github.com/ctrl-alt-delete-8/Obsidian-Quick-Basic-Auth-Workaround/blob/main/main.ts',
 			attr: { style: 'color: var(--text-accent);' }
 		});
 		sourceLink.createEl('span', { text: '.' });
@@ -334,58 +406,6 @@ class QuickBasicAuthSettingTab extends PluginSettingTab {
 		renderAuthServers();
 
 		// Author and Support section
-		containerEl.createEl('hr', { attr: { style: 'margin: 30px 0 20px 0; border: none; border-top: 1px solid var(--background-modifier-border);' } });
-
-		const authorSection = containerEl.createDiv();
-		authorSection.setAttribute('style', 'text-align: center; margin: 15px 0;');
-
-		authorSection.createEl('p', {
-			text: 'Created by @tinkerer-ctrl-alt-del',
-			attr: { style: 'margin: 5px 0; font-weight: bold;' }
-		});
-
-		authorSection.createEl('p', {
-			text: 'Have questions, found a bug, or want to request a feature? Join the Discord server!',
-			attr: { style: 'margin: 5px 0; color: var(--text-muted);' }
-		});
-
-		const buttonsContainer = containerEl.createDiv();
-		buttonsContainer.setAttribute('style', 'text-align: center; margin: 20px 0; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;');
-
-		// Buy Me a Coffee button
-		const coffeeButton = buttonsContainer.createEl('a', {
-			text: 'Buy me a coffee',
-			href: 'https://www.buymeacoffee.com/tinkerer.ctrl.alt.del',
-			attr: {
-				target: '_blank',
-				style: 'display: inline-block; padding: 10px 20px; background-color: #FFDD00; color: #000000; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #000000; transition: opacity 0.2s;'
-			}
-		});
-
-		coffeeButton.addEventListener('mouseenter', () => {
-			coffeeButton.style.opacity = '0.8';
-		});
-
-		coffeeButton.addEventListener('mouseleave', () => {
-			coffeeButton.style.opacity = '1';
-		});
-
-		// Discord button
-		const discordButton = buttonsContainer.createEl('a', {
-			text: '💬 Join Discord',
-			href: 'https://discord.com/invite/bXMpCTBMcg',
-			attr: {
-				target: '_blank',
-				style: 'display: inline-block; padding: 10px 20px; background-color: #5865F2; color: #FFFFFF; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #4752C4; transition: opacity 0.2s;'
-			}
-		});
-
-		discordButton.addEventListener('mouseenter', () => {
-			discordButton.style.opacity = '0.8';
-		});
-
-		discordButton.addEventListener('mouseleave', () => {
-			discordButton.style.opacity = '1';
-		});
+		createAuthorSupportSection(containerEl, 'https://github.com/ctrl-alt-delete-8/Obsidian-Quick-Basic-Auth-Workaround');
 	}
 }
