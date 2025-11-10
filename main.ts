@@ -36,7 +36,10 @@ export default class QuickBasicAuthPlugin extends Plugin {
 	authenticateBasicAuth(baseUrl: string, username: string, password: string) {
 		// Construct the full auth URL with credentials
 		const urlObj = new URL(baseUrl);
-		const authUrl = `${urlObj.protocol}//${username}:${password}@${urlObj.host}${urlObj.pathname}`;
+		// Properly encode username and password to handle special characters
+		const encodedUsername = encodeURIComponent(username);
+		const encodedPassword = encodeURIComponent(password);
+		const authUrl = `${urlObj.protocol}//${encodedUsername}:${encodedPassword}@${urlObj.host}${urlObj.pathname}`;
 
 		// Open auth URL to establish session
 		window.open(authUrl);
@@ -232,8 +235,16 @@ function createAuthorSupportSection(containerEl: HTMLElement, githubRepoUrl: str
 		href: githubRepoUrl,
 		attr: {
 			target: '_blank',
-			style: 'display: inline-block; padding: 10px 20px; background-color: #24292e; color: #FFFFFF; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #1b1f23;'
+			style: 'display: inline-block; padding: 10px 20px; background-color: #24292e; color: #FFFFFF; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #1b1f23; transition: opacity 0.2s;'
 		}
+	});
+
+	githubButton.addEventListener('mouseenter', () => {
+		githubButton.style.opacity = '0.8';
+	});
+
+	githubButton.addEventListener('mouseleave', () => {
+		githubButton.style.opacity = '1';
 	});
 }
 
